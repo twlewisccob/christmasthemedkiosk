@@ -3,9 +3,9 @@
    Keys must match the data-key attributes in kiosk.html
    ========================================================= */
 const LINKS = {
-  faculty:      "https://cheryljoehub.github.io/fac_2/",
+  faculty:      "https://twlewisccob.github.io/christmasfac/",
   careerFinder: "career.html",       // the career finder quiz page
-  jobs:         "https://cheryljoehub.github.io/job_2/",
+  jobs:         "https://twlewisccob.github.io/christmasjobs/",
   wouldYouRather: "wyr.html",
   programs:     "degree.html"
 };
