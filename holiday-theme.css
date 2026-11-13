@@ -1,0 +1,476 @@
+:root {
+  --holiday-pine: #103c2b;
+  --holiday-pine-light: #1d5b3e;
+  --holiday-red: #c92f3b;
+  --holiday-red-light: #ed5056;
+  --holiday-gold: #f3ca67;
+  --holiday-cream: #fff8e9;
+  --holiday-muted: #d7e5d8;
+}
+
+html,
+body {
+  background-color: #09251b;
+  color: var(--holiday-cream);
+}
+
+body {
+  background-image:
+    radial-gradient(ellipse at 12% 8%, rgba(201, 47, 59, 0.22), transparent 34%),
+    radial-gradient(ellipse at 88% 18%, rgba(243, 202, 103, 0.13), transparent 32%),
+    linear-gradient(145deg, #071b14 0%, #0c3021 48%, #164530 100%);
+  background-attachment: fixed;
+}
+
+body::before {
+  opacity: 0.28;
+}
+
+.strata {
+  background:
+    radial-gradient(ellipse at 12% 8%, rgba(201, 47, 59, 0.2), transparent 30%),
+    radial-gradient(ellipse at 88% 18%, rgba(243, 202, 103, 0.14), transparent 28%),
+    linear-gradient(145deg, #071b14 0%, #0c3021 48%, #164530 100%);
+}
+
+.strata::after {
+  content: "";
+  position: absolute;
+  inset: -100px 0 0;
+  z-index: 2;
+  pointer-events: none;
+  opacity: 0.76;
+  background-image:
+    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 128 160'%3E%3Cg transform='translate(56 72) scale(.5)' fill='none' stroke='%23fff8e9' stroke-width='2' stroke-linecap='round'%3E%3Cpath d='M16 3v26M4.7 9.5l22.6 13M4.7 22.5l22.6-13M13 7l3 3 3-3M13 25l3-3 3 3M5 13l4 .5-.5-4M23.5 22.5l-.5-4 4 .5M5 19l4-.5-.5 4M23.5 9.5l-.5 4 4-.5'/%3E%3C/g%3E%3C/svg%3E"),
+    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 128 160'%3E%3Cg transform='translate(48 64) scale(.75)' fill='none' stroke='%23ffffff' stroke-width='1.8' stroke-linecap='round'%3E%3Cpath d='M16 3v26M4.7 9.5l22.6 13M4.7 22.5l22.6-13M13 7l3 3 3-3M13 25l3-3 3 3M5 13l4 .5-.5-4M23.5 22.5l-.5-4 4 .5M5 19l4-.5-.5 4M23.5 9.5l-.5 4 4-.5'/%3E%3C/g%3E%3C/svg%3E"),
+    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 128 160'%3E%3Cg transform='translate(52 68) scale(.6)' fill='none' stroke='%23fff8e9' stroke-width='2' stroke-linecap='round'%3E%3Cpath d='M16 3v26M4.7 9.5l22.6 13M4.7 22.5l22.6-13M13 7l3 3 3-3M13 25l3-3 3 3M5 13l4 .5-.5-4M23.5 22.5l-.5-4 4 .5M5 19l4-.5-.5 4M23.5 9.5l-.5 4 4-.5'/%3E%3C/g%3E%3C/svg%3E");
+  background-size: 128px 160px, 192px 240px, 256px 320px;
+  background-position: 0 -120px, 43px -190px, 89px -220px;
+  animation: holiday-snowfall 12s linear infinite;
+}
+
+.layer-1 { background: linear-gradient(110deg, #0b2b1d, #15452d); }
+.layer-2 { background: linear-gradient(110deg, #16442f, #236443); }
+.layer-3 { background: linear-gradient(110deg, #20533b, #34764d); }
+.layer-4 { background: linear-gradient(110deg, #174533, #a92c39); opacity: 0.7; }
+.layer-5 { background: linear-gradient(110deg, #153d2d, #d5a944); opacity: 0.24; }
+
+.holiday-decor {
+  position: fixed;
+  inset: 0;
+  z-index: 2;
+  pointer-events: none;
+}
+
+.holiday-garland {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: clamp(72px, 9vh, 118px);
+  overflow: visible;
+  opacity: 0.9;
+  filter: drop-shadow(0 2px 5px rgba(0, 0, 0, 0.4));
+}
+
+.holiday-garland path {
+  fill: none;
+  stroke: var(--holiday-gold);
+  stroke-width: 3;
+  vector-effect: non-scaling-stroke;
+}
+
+.holiday-star {
+  position: absolute;
+  top: 4px;
+  left: 50%;
+  width: clamp(28px, 3.4vw, 46px);
+  height: auto;
+  overflow: visible;
+  fill: var(--holiday-gold);
+  transform: translateX(-50%);
+  filter: drop-shadow(0 0 8px rgba(255, 232, 153, 0.95));
+  animation: star-glow 2.8s ease-in-out infinite alternate;
+}
+
+.holiday-star circle {
+  fill: var(--holiday-cream);
+}
+
+.holiday-ornament {
+  --ornament-size: clamp(25px, 3vw, 40px);
+  position: absolute;
+  top: var(--ornament-top);
+  left: var(--ornament-left);
+  width: var(--ornament-size);
+  aspect-ratio: 1;
+  border: 2px solid rgba(255, 248, 233, 0.55);
+  border-radius: 50%;
+  background: radial-gradient(circle at 32% 26%, #fff8e9 0 3%, var(--ornament-color) 20%, var(--ornament-shade) 100%);
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.38), inset -5px -7px 10px rgba(0, 0, 0, 0.2);
+}
+
+.holiday-ornament::before {
+  content: "";
+  position: absolute;
+  left: 50%;
+  bottom: calc(100% - 2px);
+  width: 2px;
+  height: var(--ornament-drop);
+  background: var(--holiday-gold);
+  transform: translateX(-50%);
+  transform-origin: bottom;
+}
+
+.holiday-ornament::after {
+  content: "";
+  position: absolute;
+  top: -5px;
+  left: 50%;
+  width: 9px;
+  height: 6px;
+  border: 1px solid var(--holiday-gold);
+  border-radius: 3px 3px 0 0;
+  transform: translateX(-50%);
+}
+
+.ornament-red {
+  --ornament-color: #ed5056;
+  --ornament-shade: #9f1f30;
+  --ornament-left: 6%;
+  --ornament-top: 68px;
+  --ornament-drop: 68px;
+}
+
+.ornament-gold {
+  --ornament-color: #f3ca67;
+  --ornament-shade: #b87924;
+  --ornament-left: 18%;
+  --ornament-top: 42px;
+  --ornament-drop: 42px;
+  --ornament-size: clamp(19px, 2.2vw, 30px);
+}
+
+.ornament-green {
+  --ornament-color: #43a96a;
+  --ornament-shade: #17613c;
+  --ornament-left: 82%;
+  --ornament-top: 53px;
+  --ornament-drop: 53px;
+}
+
+.ornament-last {
+  --ornament-left: 93%;
+  --ornament-top: 76px;
+  --ornament-drop: 76px;
+  --ornament-size: clamp(22px, 2.6vw, 35px);
+}
+
+.holiday-flake {
+  position: absolute;
+  top: -10%;
+  color: rgba(255, 248, 233, 0.82);
+  font-size: clamp(22px, 3vw, 38px);
+  line-height: 1;
+  text-shadow: 0 0 14px rgba(255, 248, 233, 0.55);
+  animation: holiday-flake-fall 10s linear infinite;
+}
+
+.flake-one { left: 1%; }
+.flake-two { right: 1%; font-size: clamp(28px, 3.6vw, 44px); animation-duration: 13s; animation-delay: -4s; }
+.flake-three { left: 20%; font-size: clamp(17px, 2.2vw, 28px); animation-duration: 15s; animation-delay: -9s; }
+.flake-four { right: 20%; font-size: clamp(18px, 2.4vw, 30px); animation-duration: 12s; animation-delay: -6s; }
+
+.santa-cap {
+  position: absolute;
+  top: -15px;
+  right: 7%;
+  width: clamp(26px, 3vw, 38px);
+  height: auto;
+  transform: rotate(12deg);
+  filter: drop-shadow(0 3px 3px rgba(0, 0, 0, 0.3));
+}
+
+.mark-line {
+  position: relative;
+  display: inline-block;
+}
+
+.brand-panel,
+.brand-lockup {
+  border-color: rgba(243, 202, 103, 0.38);
+  background: linear-gradient(135deg, rgba(12, 49, 34, 0.94), rgba(20, 66, 45, 0.88));
+  box-shadow: 0 18px 42px rgba(0, 0, 0, 0.34), inset 0 1px 0 rgba(255, 248, 233, 0.12);
+}
+
+.brand-panel::after {
+  background: linear-gradient(90deg, transparent, var(--holiday-red-light), var(--holiday-gold), var(--holiday-pine-light), transparent);
+}
+
+h1,
+h2,
+h3,
+.booking-header h1 {
+  text-shadow: 0 2px 22px rgba(0, 0, 0, 0.22);
+}
+
+.mark-line,
+.brand-script,
+.tile-go,
+.dot,
+.option-pct,
+.vote-count,
+.reset-link,
+.vs {
+  color: var(--holiday-gold);
+}
+
+.tagline,
+.subtitle,
+.vote-note,
+.tomorrow-note,
+.years {
+  color: var(--holiday-muted);
+}
+
+.tile {
+  border-color: rgba(243, 202, 103, 0.28);
+  border-radius: 22px;
+  background: linear-gradient(145deg, rgba(111, 32, 41, 0.97), rgba(63, 23, 30, 0.97));
+  box-shadow: 0 16px 34px rgba(0, 0, 0, 0.3), inset 0 1px 0 rgba(255, 248, 233, 0.1);
+}
+
+.tile:nth-child(even) {
+  background: linear-gradient(145deg, rgba(141, 39, 50, 0.97), rgba(78, 24, 34, 0.97));
+}
+
+.tile::before,
+.tile:nth-child(2)::before,
+.tile:nth-child(3)::before,
+.tile:nth-child(5)::before,
+.tile:nth-child(6)::before {
+  background: linear-gradient(180deg, var(--holiday-gold), var(--holiday-red-light), var(--holiday-gold));
+  box-shadow: 0 0 14px rgba(243, 202, 103, 0.36);
+}
+
+.tile:hover {
+  transform: translateY(-5px);
+  border-color: var(--holiday-gold);
+  background: linear-gradient(145deg, #b63340, #70232e);
+  box-shadow: 0 22px 40px rgba(0, 0, 0, 0.38), 0 0 0 1px rgba(243, 202, 103, 0.18);
+}
+
+.tile:nth-child(even):hover {
+  background: linear-gradient(145deg, #cf4149, #842733);
+}
+
+.tile:active {
+  background: linear-gradient(145deg, #922733, #581d28);
+}
+
+.tile:focus-visible,
+button:focus-visible,
+a:focus-visible,
+input:focus-visible {
+  outline: 3px solid var(--holiday-gold);
+  outline-offset: 3px;
+}
+
+#backBtn,
+.booking-back {
+  border: 2px solid rgba(243, 202, 103, 0.76);
+  background: linear-gradient(145deg, #d63b46, #9f1f30);
+  color: #fff8e9;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.32), inset 0 1px 0 rgba(255, 255, 255, 0.22);
+}
+
+#backBtn:hover,
+.booking-back:hover {
+  transform: translateY(-2px);
+  border-color: #fff0bd;
+  background: linear-gradient(145deg, #ed5056, #b52838);
+}
+
+button:not(.tile):not(.option):not(#backBtn):not(.booking-back),
+.primary-btn,
+.booking-submit,
+.booking-clear,
+.keyboard-done,
+.ss-action {
+  border: 1px solid rgba(255, 238, 189, 0.76);
+  border-radius: 999px;
+  background: linear-gradient(120deg, #c72f3b 0%, #e34249 52%, #ad2233 100%);
+  color: #fffaf0;
+  font-weight: 800;
+  box-shadow: 0 8px 0 #741c29, 0 12px 24px rgba(0, 0, 0, 0.28), inset 0 1px 0 rgba(255,255,255,.22);
+  transition: transform 160ms ease, filter 160ms ease, box-shadow 160ms ease;
+}
+
+button:not(.tile):not(.option):not(#backBtn):not(.booking-back):hover,
+.primary-btn:hover,
+.booking-submit:hover,
+.booking-clear:hover,
+.keyboard-done:hover,
+.ss-action:hover {
+  filter: brightness(1.12);
+  box-shadow: 0 6px 0 #741c29, 0 15px 28px rgba(0, 0, 0, 0.34), 0 0 18px rgba(237, 80, 86, 0.26);
+  transform: translateY(-2px);
+}
+
+button:not(.tile):not(.option):not(#backBtn):not(.booking-back):active,
+.primary-btn:active,
+.booking-submit:active,
+.booking-clear:active,
+.keyboard-done:active,
+.ss-action:active {
+  transform: translateY(3px);
+  box-shadow: 0 3px 0 #741c29, 0 7px 14px rgba(0, 0, 0, 0.24);
+}
+
+.booking-clear {
+  background: linear-gradient(120deg, #216744, #328a55);
+  box-shadow: 0 8px 0 #123d2a, 0 12px 24px rgba(0, 0, 0, 0.28);
+}
+
+.booking-clear:hover {
+  background: linear-gradient(120deg, #2c8052, #41a96a);
+}
+
+#screensaver .ss-action {
+  border-color: rgba(255, 238, 189, 0.9);
+  background: linear-gradient(120deg, #c72f3b 0%, #e34249 52%, #ad2233 100%);
+  background-size: 100% 100%;
+  color: #fffaf0;
+}
+
+#screensaver .ss-action:hover,
+#screensaver .ss-action:focus-visible {
+  background: linear-gradient(120deg, #ed5056 0%, #c72f3b 52%, #9f1f30 100%);
+  box-shadow: 0 0 0 7px rgba(243, 202, 103, 0.2), 0 14px 30px rgba(8, 4, 18, 0.34);
+}
+
+.option {
+  border-color: rgba(243, 202, 103, 0.38);
+  background: linear-gradient(135deg, rgba(15, 58, 40, 0.95), rgba(8, 35, 26, 0.94));
+  color: var(--holiday-cream);
+}
+
+.option:hover {
+  border-color: var(--holiday-gold);
+  background: linear-gradient(135deg, rgba(139, 37, 47, 0.94), rgba(88, 27, 35, 0.96));
+}
+
+.option-label {
+  border-color: var(--holiday-gold);
+  color: var(--holiday-gold);
+}
+
+.card.voted .option.chosen,
+.card.voted .option.chosen .option-label {
+  border-color: var(--holiday-red-light);
+  background: var(--holiday-red);
+  color: #fffaf0;
+}
+
+.bar-fill {
+  background: linear-gradient(90deg, rgba(201, 47, 59, 0.45), rgba(243, 202, 103, 0.28));
+}
+
+#quiz-box,
+#result-box,
+.booking-form,
+.screen-keyboard,
+.booking-group,
+.booking-qr,
+.kiosk-footer,
+header {
+  border-color: rgba(243, 202, 103, 0.26);
+  background-color: rgba(9, 39, 28, 0.9);
+}
+
+.booking-group,
+.booking-choices {
+  border-color: rgba(243, 202, 103, 0.28);
+}
+
+.booking-text-input,
+.search input {
+  border-color: rgba(243, 202, 103, 0.38);
+  background: rgba(5, 28, 20, 0.88);
+  color: var(--holiday-cream);
+}
+
+.booking-text-input:focus,
+.booking-choices input[type="radio"],
+.booking-choices input[type="checkbox"] {
+  accent-color: var(--holiday-red);
+}
+
+.screen-keyboard {
+  border-color: rgba(243, 202, 103, 0.58);
+  background: linear-gradient(145deg, #164a33, #09271c);
+  box-shadow: 0 22px 70px rgba(0, 0, 0, 0.7), 0 0 28px rgba(201, 47, 59, 0.22);
+}
+
+.keyboard-key {
+  border-color: rgba(243, 202, 103, 0.3);
+  background: linear-gradient(180deg, #286443, #16442f);
+  color: var(--holiday-cream);
+}
+
+.keyboard-key:nth-child(3n) {
+  background: linear-gradient(180deg, #a92c39, #76232e);
+}
+
+.booking-error {
+  border-color: #ff9a9f;
+  background: rgba(143, 32, 42, 0.3);
+}
+
+.booking-success {
+  border-color: #73d497;
+  background: rgba(29, 111, 66, 0.3);
+}
+
+.kiosk-footer {
+  border-color: rgba(243, 202, 103, 0.32);
+  background: rgba(8, 37, 26, 0.76);
+}
+
+#result,
+.tile-label {
+  color: var(--holiday-cream);
+}
+
+@keyframes holiday-flake-fall {
+  from { transform: translate3d(0, -10vh, 0) rotate(0deg); }
+  to { transform: translate3d(36px, 115vh, 0) rotate(300deg); }
+}
+
+@keyframes holiday-snowfall {
+  from { background-position: 0 -120px, 43px -190px, 89px -220px; }
+  to { background-position: 45px 600px, -30px 740px, 130px 840px; }
+}
+
+@keyframes star-glow {
+  from { opacity: 0.78; transform: translateX(-50%) scale(0.94); }
+  to { opacity: 1; transform: translateX(-50%) scale(1.08); }
+}
+
+@media (max-width: 600px) {
+  .ornament-gold,
+  .ornament-green { display: none; }
+
+  .flake-three { left: 1%; }
+  .flake-four { right: 1%; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .holiday-flake,
+  .strata::after,
+  .holiday-star { animation: none; }
+  button,
+  .tile,
+  .option,
+  .booking-back { transition: none; }
+}
